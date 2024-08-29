@@ -11,20 +11,25 @@ eureka:
 spring:
   application:
     name: my-apigateway-service
-#  ---------- 라우팅 기능을 filter에서 java 소스로 적용시킬 것이기 때문에 주석 처리함 ----------
-#  cloud:
-#    gateway:
-#      mvc:
-#        routes:
-#          - id: first-service
-#            uri:
-#              http://127.0.0.1:8081/
-#            predicates:
-#              - Path=/first/**
-#            # route to "http://127.0.0.1:8081/first/**"
-#          - id: second-service
-#            uri:
-#              http://127.0.0.1:8082/
-#            predicates:
-#              - Path=/second/**
-#            # route to "http://127.0.0.1:8082/second/**"
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: first-service
+            uri:
+              http://127.0.0.1:8081/
+            predicates:
+              - Path=/first/**
+            # route to "http://127.0.0.1:8081/first/**"
+            filters:
+              - AddRequestHeader=first-service-req, first-service-req-header-new
+              - AddResponseHeader=first-service-res, first-service-res-header-new
+          - id: second-service
+            uri:
+              http://127.0.0.1:8082/
+            predicates:
+              - Path=/second/**
+            # route to "http://127.0.0.1:8082/second/**"
+            filters:
+              - AddRequestHeader=second-service-req, second-service-req-header-new
+              - AddResponseHeader=second-service-res, second-service-res-header-new
