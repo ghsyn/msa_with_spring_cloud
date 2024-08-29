@@ -5,7 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
+<!--        <version>3.3.3</version>-->
+        <version>2.4.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
@@ -32,14 +33,17 @@
     </properties>
     <dependencies>
 
+        <!--        AbstractGatewayFilterFactory 사용하므로 [Gateway -> Reactive Gateway]       -->
+        <!--        FilterConfig 말고 application.yml 사용하므로 [Reactive Gateway- > Gateway]       -->
+        <!--        [Reactive Gateway- > Gateway] 둘 다 추가 시 "Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway." 에러발생 ~       -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway-mvc</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-gateway</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>

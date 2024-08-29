@@ -21,4 +21,9 @@ public class SecondServiceController {
         log.info("::>> header : {}", header);
         return "Hello Second Service with Header Message.";
     }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Hello Second Service with Custom Filter.";
+    }
 }

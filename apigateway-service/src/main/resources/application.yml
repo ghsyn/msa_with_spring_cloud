@@ -20,16 +20,12 @@ spring:
               http://127.0.0.1:8081/
             predicates:
               - Path=/first/**
-            # route to "http://127.0.0.1:8081/first/**"
             filters:
-              - AddRequestHeader=first-service-req, first-service-req-header-new
-              - AddResponseHeader=first-service-res, first-service-res-header-new
+              - CustomFilter
           - id: second-service
             uri:
               http://127.0.0.1:8082/
             predicates:
               - Path=/second/**
-            # route to "http://127.0.0.1:8082/second/**"
             filters:
-              - AddRequestHeader=second-service-req, second-service-req-header-new
-              - AddResponseHeader=second-service-res, second-service-res-header-new
+              - CustomFilter

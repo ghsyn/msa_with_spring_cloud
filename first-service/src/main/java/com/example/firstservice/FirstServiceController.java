@@ -21,4 +21,9 @@ public class FirstServiceController {
         log.info("::>> header : {}", header);
         return "Hello First Service with Header Message.";
     }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Hello First Service with Custom Filter.";
+    }
 }
